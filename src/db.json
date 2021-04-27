@@ -1,0 +1,20 @@
+{
+  "products": [
+    {
+      "name": "Armband",
+      "brand": "Adidas",
+      "description": "A armband for your wrist to help you on daily basis",
+      "price": "29.90",
+      "img": "https://cdn.sweatband.com/zoggs_dory_armbands_zoggs_dory_armbands_2000x2000.jpg",
+      "id": 1
+    },
+    {
+      "name": "All Starts",
+      "brand": "Nike",
+      "description": "The best shoes in town",
+      "price": "112.50",
+      "img": "https://i.pinimg.com/originals/61/53/e6/6153e6d046f822f62c22fcf5e4483c89.jpg",
+      "id":2
+    }
+  ]
+}
