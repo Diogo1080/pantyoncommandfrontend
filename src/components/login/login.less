@@ -1,0 +1,129 @@
+@import "../../colors.less";
+/* Login */
+.loginOn{
+    background-color: rgba(255,255,255,0.5);
+}
+
+.outer-container{
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    position: fixed;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2%;
+    min-width: 300px;
+}
+
+.inner-container{
+    min-width: 300px;
+    min-height: 350px;
+    width: 30%;
+}
+
+.tab-container {
+    background: @secondaryColor;
+    display: flex;
+    border-radius: 10px;
+    min-height: 300px;
+    height: 80%;
+    flex: 1;
+    flex-direction: column;
+}
+
+.close-btn-container{
+    display: flex;
+    padding:5px;
+    justify-content: center;
+}
+
+.login-close-btn{
+    height: 40px;
+    align-self: center;
+}
+
+/* Tabs */
+
+.tab-container .tabs {
+    width: 100%;
+    display: flex;
+    margin: 0;
+    font-size: 20px;
+}
+
+.tab-container .tabs>div:nth-child(1) {
+    border-radius: 10px 0 0;
+}
+
+.tab-container .tabs>div:nth-child(2) {
+    border-radius: 0 10px 0 0;
+}
+
+
+.tab-container .login-tab {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+    background-color: @mainColorDarker;
+}
+
+.tab-container .login-tab.selected {
+    border-bottom: 4px solid #5f425e;
+}
+
+.tab-container .login-tab:hover {
+    background-color: #5f425e;
+    cursor: pointer;
+}
+
+/* Outer and inner flex containers */
+
+.tab-container .submit-btn-container {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}
+
+.sign-in{
+    height: 100%;
+}
+
+.tab-container .form-container {
+    padding: 5px;
+    color: black;
+}
+
+.tab-container .form-container div {
+    display: flex;
+    position:relative;
+    padding-bottom: 5px;
+}
+
+.tab-container .form-container > div > label {
+    flex: 1 0 100px;
+    max-width: 220px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.tab-container .form-container > div > label + * {
+    flex: 1 0 150px;
+    margin-right:5px
+}
+
+input{
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.tab-container .submit-btn {
+    left: 10%;
+    bottom:10%;
+    font-size: 18px;
+    padding: 5px;
+    width: 80%;
+    border: none;
+    border-radius: 5px;
+}
