@@ -4,7 +4,7 @@ import {useState} from "react";
 
 const Login = (props) => {
 
-    const {showing, showingcallback} = props;
+    const {currentLoginModalState,toggleLogin, setLoginInfo, toggleLoginModal} = props;
 
     const loginInitialState = {
         email: "",
@@ -38,8 +38,6 @@ const Login = (props) => {
             confirmPassword: input.confirmPassword
         };
 
-        console.log(data)
-
         if (data.password != input.confirmPassword) {
             alert("Passwords don't match")
         } else {
@@ -48,7 +46,6 @@ const Login = (props) => {
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(data)
             }).then((response) => {
-                console.log(response)
             })
         }
 
@@ -68,25 +65,33 @@ const Login = (props) => {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(data)
         }).then((response) => {
-            console.log(response);
-            response.headers.forEach(value => {console.log(value)})
+            response.headers.forEach(value => {
+                console.log(value)
+            })
             if (response.status != 200) {
                 alert("Login info wrong.")
             } else {
                 return response.json();
             }
         }).then((response) => {
-            console.log(response);
-            document.cookie = "token=Bearer " + response.token;
+            let date = new Date();
+            date.setTime(parseInt(date.getTime()) + 1000 * 60 * 60 * 24 * 7 * 4 * 6);
+            date = date.toUTCString();
+
+            document.cookie = "token=Bearer " + response.token + "; expires=" + date + ";";
+            setLoginInfo({...response.principal})
+            toggleLogin(true)
+            toggleLoginModal(false)
         })
 
     }
 
     return (
-        <div className={showing?"loginOn outer-container":"outer-container"} style={{display: showing ? "flex" : "none"}}>
+        <div className={currentLoginModalState ? "loginOn outer-container" : "outer-container"}
+             style={{display: currentLoginModalState ? "flex" : "none"}}>
             <div className="inner-container">
                 <div className="login-popin" className="close-btn-container">
-                    <img onClick={() => showingcallback()} src="cancel.svg" className="login-close-btn"/>
+                    <img onClick={() => toggleLoginModal()} src="cancel.svg" className="login-close-btn"/>
                 </div>
                 <div className="tab-container">
                     <div className="tabs">

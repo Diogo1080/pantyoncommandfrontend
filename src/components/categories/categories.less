@@ -1,17 +1,16 @@
-
-.ingredientCategoryContainer{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  height: 240px;
-  align-content: flex-start;
+@import "../../colors.less";
+.outer-container-category{
+  flex-direction: column;
 }
-
 .categoryContainer{
+  background-color: @mainColorDarker;
+  color: @mainColorText;
   display: flex;
   justify-content: center;
-  flex: 34%;
-  padding: 20px 20px 20px 20px;
-  border: 1px solid black;
-  margin: 10px;
+  align-items: center;
+  font-size: 20px;
+  border-radius: 10px;
+  padding:5px;
+  border: none;
+  margin: 10px 10px 0px 10px;
 }

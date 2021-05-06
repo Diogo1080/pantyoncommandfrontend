@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useContext} from "react";
 import "../../index.less"
 import "./home.less"
+
 
 const Home = () => {
 

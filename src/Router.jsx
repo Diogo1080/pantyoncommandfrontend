@@ -7,28 +7,44 @@ import {
 import Home from "./pages/home"
 import Search from "./pages/search"
 import Header from "./components/header";
-import "./index.less"
-import LoginModalContext from "./LoginModalContext";
 import Login from "./components/login";
+import Profile from "./pages/Profile";
+
+import "./index.less"
+import LoginContext from "./context/loginContext";
+import {IngredientProvider} from "./context/ingredientsContext";
+import Searched from "./pages/searched";
 
 
 const Router = () => {
 
-    const {currentLoginState, toggleLoginModal} = useContext(LoginModalContext)
-
+    const {currentLoginState,toggleLogin,loginInfo,setLoginInfo,currentLoginModalState,toggleLoginModal} = useContext(LoginContext)
     return (
         <>
             <BrowserRouter>
-                <Login showing={currentLoginState} showingcallback={toggleLoginModal}></Login>
+                <Login
+                    currentLoginModalState={currentLoginModalState}
+                    setLoginInfo={setLoginInfo}
+                    toggleLogin={toggleLogin}
+                    toggleLoginModal={toggleLoginModal}>
+                </Login>
                 <main className= "clean-layout-body">
-                    <Header loginState={currentLoginState}/>
+                    <Header currentLoginState={currentLoginState}/>
                     <Switch>
                         <Route path="/" exact>
-                            <Home></Home>
+                            <Home/>
                         </Route>
-                        <Route path="/search">
-                            <Search></Search>
+                        <Route path="/profile" exact>
+                            <Profile/>
                         </Route>
+                        <IngredientProvider>
+                            <Route path="/search">
+                                <Search/>
+                            </Route>
+                            <Route>
+                                <Searched/>
+                            </Route>
+                        </IngredientProvider>
                     </Switch>
                 </main>
             </BrowserRouter>

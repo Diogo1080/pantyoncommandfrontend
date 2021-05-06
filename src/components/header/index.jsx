@@ -1,11 +1,13 @@
 import React, {useContext} from "react";
 import "./header.less"
 import {Link} from "react-router-dom"
-import LoginModalContext from "../../LoginModalContext";
+import LoginContext from "../../context/loginContext";
 
-const Header = () => {
+const Header = (props) => {
 
-    const {toggleLoginModal} = useContext(LoginModalContext)
+
+    const {currentLoginState} = props
+    const {toggleLoginModal} = useContext(LoginContext)
 
     return (
         <>
@@ -16,17 +18,19 @@ const Header = () => {
                     </Link>
                 </nav>
                 <div className="link-container">
-                    <Link exact="true" to="/">
-                        Home
-                    </Link>
-                </div>
-                <div className="link-container">
                     <Link to="/search">
                         Search
                     </Link>
                 </div>
                 <div className="login-svg-container">
-                    <img src="chef.svg" alt="chef-icon" onClick={toggleLoginModal}/>
+                    {
+                        currentLoginState?
+                            <Link to="/profile">
+                                <img src="chef.svg" alt="chef-icon" />
+                            </Link>
+                        :
+                            <img src="chef.svg" alt="chef-icon" onClick={toggleLoginModal}/>
+                    }
                 </div>
             </header>
         </>
