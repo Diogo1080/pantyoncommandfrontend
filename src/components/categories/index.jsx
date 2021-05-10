@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import "./categories.less"
 import Ingredients from "../Ingredients";
 
@@ -9,7 +9,7 @@ const Category = (props) => {
 
     return (
         <>
-            <button className="categoryContainer" onClick={()=>{setCategoryOpen(!categoryOpen)}}>
+            <button className={categoryOpen?"categoryBtn open":"categoryBtn"} onClick={()=>{setCategoryOpen(!categoryOpen)}}>
                 {name}
             </button>
             <div className="outer-container-category" style={{display: categoryOpen ? "flex" : "none"}}>

@@ -38,17 +38,14 @@ const Search = () => {
         <>
             {searched ? <Redirect to={{pathname: "/searched"}}/> :
                 <>
-                    <section className="container">
-                        <h1>
-                            Search Menu
-                        </h1>
-                    </section>
                     <div className="outerIngredientsMenuContainer">
                         <div className="ingredientsMenuContainer">
                             <button className="menu" onClick={() => {
                                 toggleShowIngredientMenu(!ingredientMenuState)
                             }}>
-                                Ingredients
+                                <div>
+                                    Ingredients
+                                </div>
                             </button>
                             <div className="ingredientCategoryContainer"
                                  style={{display: ingredientMenuState ? "flex" : "none"}}>
@@ -60,9 +57,8 @@ const Search = () => {
                             </div>
                         </div>
                         <div className="link-container submit-btn-container">
-                            <button className="submit-btn" onClick={() => {
-                                handleSearchSubmit()
-                            }}>Find me some recipes
+                            <button className="submit-btn" onClick={() => {handleSearchSubmit()}}>
+                                Find me some recipes
                             </button>
                         </div>
                     </div>

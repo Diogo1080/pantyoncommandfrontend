@@ -14,6 +14,8 @@ import "./index.less"
 import LoginContext from "./context/loginContext";
 import {IngredientProvider} from "./context/ingredientsContext";
 import Searched from "./pages/searched";
+import Index from "./pages/recipe";
+import Recipe from "./pages/recipe";
 
 
 const Router = () => {
@@ -41,8 +43,11 @@ const Router = () => {
                             <Route path="/search">
                                 <Search/>
                             </Route>
-                            <Route>
+                            <Route path="/searched">
                                 <Searched/>
+                            </Route>
+                            <Route path="/recipe/:id">
+                                <Recipe></Recipe>
                             </Route>
                         </IngredientProvider>
                     </Switch>

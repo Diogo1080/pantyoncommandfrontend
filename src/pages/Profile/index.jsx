@@ -8,7 +8,17 @@ const Profile = () => {
 
     const {currentLoginState, loginInfo, setLoginInfo, toggleLogin} = useContext(LoginContext)
 
-    const [logOut, setLogOut] = useState(false)
+    let logout=false
+
+    let token
+
+    if (document.cookie) {
+        token = JSON.parse(atob(document.cookie?.split("token=Bearer")[1]?.split(".")[1]));
+    }
+
+    if(!token){logout=true}
+
+    const [logOut, setLogOut] = useState(logout)
 
     const loginUpdateState = {
         email: "",
@@ -18,11 +28,7 @@ const Profile = () => {
     }
     const [formInfo, setFormInfo] = useState(loginUpdateState)
 
-    let token
 
-    if (document.cookie) {
-        token = JSON.parse(atob(document.cookie?.split("token=Bearer")[1]?.split(".")[1]));
-    }
 
     const handleInputChange = (e) => {
         const {name, value} = e.target;

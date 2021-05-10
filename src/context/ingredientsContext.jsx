@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useState} from "react";
 import ingredientsContext from "./ingredientsContext";
 
 const IngredientContext = React.createContext();
@@ -13,7 +13,12 @@ export const IngredientProvider = (props) => {
     const {children} = props
 
     return (
-        <IngredientContext.Provider value={{searchedState, toggleSearchedState,currentIngredients, setIngredients}}>
+        <IngredientContext.Provider value={{
+            searchedState,
+            toggleSearchedState,
+            currentIngredients,
+            setIngredients
+        }}>
             {children}
         </IngredientContext.Provider>
 
